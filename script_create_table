@@ -1,0 +1,58 @@
+create table address
+            (id integer primary key,
+            street varchar(255),
+            city varchar(100),
+            state varchar(100),
+            zip integer);
+
+create table library_member
+            (id integer primary key,
+             member_id varchar(50),
+             firstname varchar(100),
+             lastname varchar(100),
+             phone varchar(100),
+             address_id integer);
+
+create table author
+            (id integer primary key,
+             firstname varchar(100),
+             lastname varchar(100),
+             phone varchar(100),
+             credentials varchar(255),
+             address_id integer,
+             short_bio varchar(255));
+
+create table book
+            (id integer primary key,
+             isbn varchar(100),
+             title varchar(255),
+             max_checkout_length varchar(100));
+
+create table book_copy
+            (copy_num integer,
+             book_id integer);
+
+
+create table book_author
+            (book_id integer,
+             author_id integer);
+
+create table checkout_record_entry
+            (id integer primary key,
+             book_copy_num integer,
+             checkout_date timestamp,
+             due_date timestamp);
+
+create table checkout_record
+            (checkout_record_entry_id integer,
+             member_id integer);
+
+create table user_account
+            (id integer primary key,
+            username varchar(50),
+            password varchar(20),
+            role_id int);
+
+create table role
+            (id integer primary key,
+             name varchar(50));
